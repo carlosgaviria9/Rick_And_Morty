@@ -1,5 +1,6 @@
+import style from './Detail.module.css';
 import axios from 'axios';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 
 // const URL_BASE = 'https://be-a-rym.up.railway.app/api/character';
@@ -23,13 +24,32 @@ const Detail = () => {
     }, [id]);
     
     return(
-        <div>
-            <h2>{character?.name}</h2>
-            <h2>{character?.status}</h2>
-            <h2>{character?.species}</h2>
-            <h2>{character?.gender}</h2>
-            <h2>{character?.origin?.name}</h2>
-            <img src={character?.image} alt={character?.name} />
+        <div className={style.container}>
+            <div>
+                <div>
+                    <button>
+                        <Link to='/home' className={style.link}>Home</Link>
+                    </button>
+                    <h1>{character?.name}</h1>
+                </div>
+
+                <div className={style.detail}>
+                    <div className={style.containerImg}>
+                        <img src={character?.name} alt={character?.name} />
+                    </div>
+                    <div>
+                        <label htmlFor='status'> Status: </label>
+                        <p>{character?.status}</p>
+                        <label htmlFor='specie'> Species: </label>
+                        <p>{character?.species}</p>
+                        <label htmlFor='gender'> Gender: </label>
+                        <p>{character?.gender}</p>
+                        <label htmlFor='origin'> Origin: </label>
+                        <p>{character?.origin?.name}</p>
+                    
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
